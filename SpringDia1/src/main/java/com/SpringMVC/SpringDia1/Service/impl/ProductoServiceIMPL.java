@@ -5,10 +5,12 @@ import com.SpringMVC.SpringDia1.Model.Producto;
 import com.SpringMVC.SpringDia1.Repository.ProductoRepository;
 import com.SpringMVC.SpringDia1.Service.ProductoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Service
 public class ProductoServiceIMPL implements ProductoService {
 
     private ProductoRepository productoRepository;

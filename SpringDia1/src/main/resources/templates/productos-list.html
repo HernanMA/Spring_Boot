@@ -1,8 +1,4 @@
 <html xmlns:th="http://thmyelead.org" lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
 <body class="d-flex flex-column h-100">
 <main class="flex-shrink-0">
   <!-- Navigation-->
@@ -46,7 +42,7 @@
         <div th:each="producto :${productos}" class="col-lg-6">
           <div class="position-relative mb-5">
             <img class="img-fluid rounded-3 mb-3" th:src="${producto.fotoProducto}" alt="..." />
-            <a th:text="${producto.title}" class="h3 fw-bolder text-decoration-none link-dark stretched-link" href="#!">Project name</a>
+            <a th:text="${producto.nombre}" class="h3 fw-bolder text-decoration-none link-dark stretched-link" href="#!">Project name</a>
           </div>
         </div>
       </div>
