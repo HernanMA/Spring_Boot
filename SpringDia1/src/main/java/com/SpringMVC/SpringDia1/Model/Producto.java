@@ -27,4 +27,6 @@ public class Producto {
     @CreationTimestamp
     private LocalDateTime dia_pedido;
     private String fotoProducto;
+
+
 }
