@@ -12,7 +12,7 @@ import java.util.List;
 @Controller
 public class CategoriaController {
 
-    private CategoriasService categoriasService;
+    private final CategoriasService categoriasService;
 
     @Autowired
     public CategoriaController(CategoriasService categoriasService) {
@@ -21,8 +21,8 @@ public class CategoriaController {
 
     @GetMapping("/categorias")
     public String listCategorias(Model model) {
-        List<CategoriasDto> categoria = categoriasService.findAllCategorias();
-        model.addAttribute("categorias", categoria);
+        List<CategoriasDto> categorias = categoriasService.findAllCategorias();
+        model.addAttribute("categorias", categorias);
         return "categorias-list";
     }
 }
