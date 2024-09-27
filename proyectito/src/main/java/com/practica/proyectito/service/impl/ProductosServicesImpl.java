@@ -5,10 +5,12 @@ import com.practica.proyectito.models.Productos;
 import com.practica.proyectito.repository.ProductosRepository;
 import com.practica.proyectito.service.ProductoServices;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Service
 public class ProductosServicesImpl implements ProductoServices {
 
     private ProductosRepository productosRepository;
