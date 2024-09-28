@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="https://www.thymeleaf.org/"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+  <title>Productos Create</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+  <!-- Core theme CSS (includes Bootstrap)-->
+  <link href="css/styles.css" rel="stylesheet" />
+</head>
+<body class="d-flex flex-column h-100">
+<main class="flex-shrink-0">
+  <!-- Page Content-->
+  <section layout:fragment="body" class="py-5">
+    <div class="container">
+      <form role="form" method="post" th:action="@{/movimientos/new}" th:object="${movimientosInventario}">
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="producto_id">Producto Id</label>
+            <input
+                    type="number"
+                    class="form-control"
+                    id="producto_id"
+                    name="producto_id"
+                    th:field="*{producto_id}"
+                    placeholder="Producto Id">
+          </div>
+          <div class="form-group col-md-6">
+            <label for="fecha">Fecha</label>
+            <input
+                    type="date"
+                    class="form-control"
+                    id="fecha"
+                    name="fecha"
+                    th:field="*{fecha}"
+                    placeholder="Fecha">
+          </div>
+          <div class="form-group col-md-6">
+            <label for="cantidad">Cantidad</label>
+            <input
+                    type="text"
+                    class="form-control"
+                    id="cantidad"
+                    name="cantidad"
+                    th:field="*{cantidad}"
+                    placeholder="Cantidad">
+          </div>
+        </div>
+        <div class="form-group mb-3">
+          <label for="tipo_movimiento">Tipo de movimiento</label>
+          <select
+                  class="form-control"
+                  id="tipo_movimiento"
+                  name="tipo_movimiento"
+                  th:field="*{tipo_movimiento}">
+            <option value="" disabled>Seleccione un tipo de movimiento</option>
+            <option value="entrada">Entrada</option>
+            <option value="salida">Salida</option>
+          </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Create</button>
+      </form>
+    </div>
+  </section>
+</main>
+</body>
+</html>
