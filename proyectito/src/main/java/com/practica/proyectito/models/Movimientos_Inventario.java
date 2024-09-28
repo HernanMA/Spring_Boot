@@ -6,7 +6,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Data
 @NoArgsConstructor
@@ -19,7 +19,7 @@ public class Movimientos_Inventario {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private int producto_id;
-    private LocalDateTime fecha;
+    private LocalDate fecha;
     private int cantidad;
     private String tipo_movimiento;
 }
