@@ -6,9 +6,7 @@ import com.practica.proyectito.service.ProductoServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -39,6 +37,20 @@ public class ProductosController {
     @PostMapping("/productos/new")
     public String saveProductos(@ModelAttribute("productos") Productos productos) {
         productoServices.saveProductos(productos);
+        return "redirect:/productos";
+    }
+
+    @GetMapping("/productos/{productosId}/edit")
+    public String editProductosForm(@PathVariable("productosId") long productosId, Model model) {
+        ProductosDto productos = productoServices.findProductosById(productosId);
+        model.addAttribute("productos", productos);
+        return "productos-edit";
+    }
+
+    @PostMapping("/productos/{productosId}/edit")
+    public String updateProductos(@PathVariable("productosId") Long productosId, @ModelAttribute("productos") ProductosDto productos) {
+        productos.setId(productosId);
+        productoServices.updateClub(productos);
         return "redirect:/productos";
     }
 }

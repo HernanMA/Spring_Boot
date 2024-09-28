@@ -27,11 +27,12 @@
         <p class="lead fw-normal text-muted mb-0">Acá puedes ver los productos del inventario</p>
       </div>
       <div class="row gx-5">
-        <div th:each="producto : ${productos}" class="col-lg-6">
-          <div class="position-relative mb-5">
-            <img class="img-fluid rounded-3 mb-3" th:src="${producto.descripcion}" alt="..." />
-            <a th:text="${producto.nombre}" class="h3 fw-bolder text-decoration-none link-dark stretched-link" href="#!">Project name</a>
+        <div th:each="producto : ${productos}" class="col-lg-6 mb-2">
+          <div class="position-relative mb-3">
+            <img class="img-fluid rounded-3 mb-3" th:src="${producto.descripcion}" />
+            <a th:text="${producto.nombre}" class="h3 fw-bolder text-decoration-none link-dark stretched-link" th:href="@{/productos/{productosId}(productosId=${producto.id})}"></a>
           </div>
+          <a class="btn btn-primary" th:href="@{/productos/{productosId}/edit(productosId=${producto.id})}">Edit</a>
         </div>
       </div>
     </div>

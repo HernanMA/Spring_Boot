@@ -31,6 +31,31 @@ public class ProductosServicesImpl implements ProductoServices {
         return productosRepository.save(productos);
     }
 
+    @Override
+    public ProductosDto findProductosById(Long productosId) {
+        Productos productos = productosRepository.findById(productosId).get();
+        return mapToProductosDto(productos);
+    }
+
+    @Override
+    public void updateClub(ProductosDto productosDto) {
+        Productos productos = mapToProductos(productosDto);
+        productosRepository.save(productos);
+    }
+
+    private Productos mapToProductos(ProductosDto productos) {
+        Productos productosDto = Productos.builder()
+                .id(productos.getId())
+                .nombre(productos.getNombre())
+                .descripcion(productos.getDescripcion())
+                .precio(productos.getPrecio())
+                .cantidad_en_stock(productos.getCantidad_en_stock())
+                .categoria_id(productos.getCategoria_id())
+                .proveedor_id(productos.getProveedor_id())
+                .build();
+        return productosDto;
+    }
+
     private ProductosDto mapToProductosDto(Productos productos) {
         ProductosDto productosDto = ProductosDto.builder()
                 .id(productos.getId())

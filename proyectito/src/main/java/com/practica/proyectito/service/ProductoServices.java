@@ -8,4 +8,8 @@ import java.util.List;
 public interface ProductoServices {
     List<ProductosDto> findAllProductos();
     Productos saveProductos(Productos productos);
+
+    ProductosDto findProductosById(Long productosId);
+
+    void updateClub(ProductosDto productos);
 }
