@@ -1,11 +1,14 @@
 package com.practica.proyectito.controller;
 
 import com.practica.proyectito.dto.ProductosDto;
+import com.practica.proyectito.models.Productos;
 import com.practica.proyectito.service.ProductoServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
 
@@ -24,5 +27,18 @@ public class ProductosController {
         List<ProductosDto> productos = productoServices.findAllProductos();
         model.addAttribute("productos", productos);
         return "productos-list";
+    }
+
+    @GetMapping("/productos/new")
+    public String createProductoForm(Model model) {
+        Productos productos = new Productos();
+        model.addAttribute("productos", productos);
+        return "productos-create";
+    }
+
+    @PostMapping("/productos/new")
+    public String saveProductos(@ModelAttribute("productos") Productos productos) {
+        productoServices.saveProductos(productos);
+        return "redirect:/productos";
     }
 }
