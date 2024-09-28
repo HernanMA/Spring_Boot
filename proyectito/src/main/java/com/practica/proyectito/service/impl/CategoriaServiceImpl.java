@@ -27,6 +27,11 @@ public class CategoriaServiceImpl implements CategoriasService {
         return categoria.stream().map((categorias) -> mapToCategoriasDto(categorias)).collect(Collectors.toList());
     }
 
+    @Override
+    public Categorias saveCategorias(Categorias categorias) {
+        return categoriasRepository.save(categorias);
+    }
+
     private CategoriasDto mapToCategoriasDto(Categorias categorias) {
         CategoriasDto categoriasDto = CategoriasDto.builder()
                 .id(categorias.getId())

@@ -26,6 +26,11 @@ public class ProveedoresServicesImpl implements ProveedoresServices {
         return proveedor.stream().map((proveedores) -> mapToProveedoresDto(proveedores)).collect(Collectors.toList());
     }
 
+    @Override
+    public Proveedores saveProveedores(Proveedores proveedores) {
+        return proveedoresRepository.save(proveedores);
+    }
+
     private ProveedoresDto mapToProveedoresDto(Proveedores proveedores) {
         ProveedoresDto proveedoresDto = ProveedoresDto.builder()
                 .id(proveedores.getId())

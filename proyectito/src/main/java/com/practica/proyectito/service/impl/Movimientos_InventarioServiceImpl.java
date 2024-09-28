@@ -27,6 +27,11 @@ public class Movimientos_InventarioServiceImpl implements Movimientos_Inventario
         return movimientosInventario.stream().map((movimientosInventarios) -> mapToMovimientosInventarioDto(movimientosInventarios)).collect(Collectors.toList());
     }
 
+    @Override
+    public Movimientos_Inventario saveMovimientos(Movimientos_Inventario movimientosInventario) {
+        return movimientosInventarioRepository.save(movimientosInventario);
+    }
+
     private MovimientosInventarioDto mapToMovimientosInventarioDto(Movimientos_Inventario movimientosInventario) {
         MovimientosInventarioDto movimientosInventarioDto = MovimientosInventarioDto.builder()
                 .id(movimientosInventario.getId())

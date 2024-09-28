@@ -26,6 +26,11 @@ public class ProductosServicesImpl implements ProductoServices {
         return producto.stream().map((productos) -> mapToProductosDto(productos)).collect(Collectors.toList());
     }
 
+    @Override
+    public Productos saveProductos(Productos productos) {
+        return productosRepository.save(productos);
+    }
+
     private ProductosDto mapToProductosDto(Productos productos) {
         ProductosDto productosDto = ProductosDto.builder()
                 .id(productos.getId())
