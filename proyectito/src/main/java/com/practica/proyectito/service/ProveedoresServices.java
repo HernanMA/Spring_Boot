@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface ProveedoresServices {
     List<ProveedoresDto> findAllProveedores();
-    Proveedores saveProveedores(Proveedores proveedores);
+    Proveedores saveProveedores(ProveedoresDto proveedoresDto);
 
     ProveedoresDto findProveedoresById(Long proveedoresId);
 

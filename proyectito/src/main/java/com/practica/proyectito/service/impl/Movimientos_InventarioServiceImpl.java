@@ -28,7 +28,8 @@ public class Movimientos_InventarioServiceImpl implements Movimientos_Inventario
     }
 
     @Override
-    public Movimientos_Inventario saveMovimientos(Movimientos_Inventario movimientosInventario) {
+    public Movimientos_Inventario saveMovimientos(MovimientosInventarioDto movimientosInventarioDto) {
+        Movimientos_Inventario movimientosInventario = mapToMovimientosInventario(movimientosInventarioDto);
         return movimientosInventarioRepository.save(movimientosInventario);
     }
 

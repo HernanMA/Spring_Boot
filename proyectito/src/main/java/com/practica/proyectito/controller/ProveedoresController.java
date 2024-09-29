@@ -41,8 +41,8 @@ public class ProveedoresController {
     }
 
     @PostMapping("/proveedores/new")
-    public String saveProveedores(@ModelAttribute("proveedores") Proveedores proveedores) {
-        proveedoresServices.saveProveedores(proveedores);
+    public String saveProveedores(@ModelAttribute("proveedores") ProveedoresDto proveedoresDto) {
+        proveedoresServices.saveProveedores(proveedoresDto);
         return "redirect:/proveedores";
     }
 

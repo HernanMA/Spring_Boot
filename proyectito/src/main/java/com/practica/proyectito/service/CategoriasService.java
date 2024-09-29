@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface CategoriasService {
     List<CategoriasDto> findAllCategorias();
-    Categorias saveCategorias(Categorias categorias);
+    Categorias saveCategorias(CategoriasDto categoriasDto);
 
     CategoriasDto findCategoriasById(Long categoriasId);
 

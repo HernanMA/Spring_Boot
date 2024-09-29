@@ -28,7 +28,8 @@ public class CategoriaServiceImpl implements CategoriasService {
     }
 
     @Override
-    public Categorias saveCategorias(Categorias categorias) {
+    public Categorias saveCategorias(CategoriasDto categoriasDto) {
+        Categorias categorias = mapToCategorias(categoriasDto);
         return categoriasRepository.save(categorias);
     }
 

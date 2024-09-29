@@ -29,7 +29,8 @@ public class ProveedoresServicesImpl implements ProveedoresServices {
     }
 
     @Override
-    public Proveedores saveProveedores(Proveedores proveedores) {
+    public Proveedores saveProveedores(ProveedoresDto proveedoresDto) {
+        Proveedores proveedores = mapToProveedores(proveedoresDto);
         return proveedoresRepository.save(proveedores);
     }
 
@@ -41,11 +42,11 @@ public class ProveedoresServicesImpl implements ProveedoresServices {
 
     @Override
     public void updateProveedores(ProveedoresDto proveedoresDto) {
-        Proveedores proveedores = mapToProveedoresDto(proveedoresDto);
+        Proveedores proveedores = mapToProveedores(proveedoresDto);
         proveedoresRepository.save(proveedores);
     }
 
-    private Proveedores mapToProveedoresDto(ProveedoresDto proveedores) {
+    private Proveedores mapToProveedores(ProveedoresDto proveedores) {
         Proveedores proveedoresDto = Proveedores.builder()
                 .id(proveedores.getId())
                 .nombre(proveedores.getNombre())

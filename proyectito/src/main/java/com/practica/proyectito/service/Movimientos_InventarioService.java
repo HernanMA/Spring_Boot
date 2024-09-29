@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface Movimientos_InventarioService {
     List<MovimientosInventarioDto> findAllMovimientosInventario();
-    Movimientos_Inventario saveMovimientos(Movimientos_Inventario movimientosInventario);
+    Movimientos_Inventario saveMovimientos(MovimientosInventarioDto movimientosInventarioDto);
 
     MovimientosInventarioDto findMovimientosByid(Long movimientosId);
 

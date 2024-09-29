@@ -41,8 +41,8 @@ public class MovimientoInventarioController {
     }
 
     @PostMapping("/movimientos/new")
-    public String saveMovimientos(@ModelAttribute("movimientosInventario") Movimientos_Inventario movimientosInventario) {
-        movimientosInventarioService.saveMovimientos(movimientosInventario);
+    public String saveMovimientos(@ModelAttribute("movimientosInventario") MovimientosInventarioDto movimientosInventarioDto) {
+        movimientosInventarioService.saveMovimientos(movimientosInventarioDto);
         return "redirect:/movimientos";
     }
 
