@@ -39,6 +39,7 @@
                     name="fecha"
                     th:field="*{fecha}"
                     placeholder="Fecha">
+            <p th:if="${#fields.hasErrors('fecha')}" class="text-danger" th:errors="*{fecha}"></p>
           </div>
           <div class="form-group col-md-6">
             <label for="cantidad">Cantidad</label>
@@ -49,6 +50,7 @@
                     name="cantidad"
                     th:field="*{cantidad}"
                     placeholder="Cantidad">
+            <p th:if="${#fields.hasErrors('cantidad')}" class="text-danger" th:errors="*{cantidad}"></p>
           </div>
         </div>
         <div class="form-group mb-3">

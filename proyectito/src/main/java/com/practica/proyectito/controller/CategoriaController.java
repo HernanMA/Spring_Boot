@@ -40,7 +40,12 @@ public class CategoriaController {
     }
 
     @PostMapping("/categorias/new")
-    public String saveCategorias(@ModelAttribute("categorias") CategoriasDto categoriasDto) {
+    public String saveCategorias(@Valid @ModelAttribute("categorias") CategoriasDto categoriasDto,
+                                 BindingResult result, Model model) {
+        if (result.hasErrors()) {
+            model.addAttribute("categorias", categoriasDto);
+            return "categorias-create";
+        }
         categoriasService.saveCategorias(categoriasDto);
         return "redirect:/categorias";
     }

@@ -29,6 +29,7 @@
                     name="nombre"
                     th:field="*{nombre}"
                     placeholder="Nombre">
+            <p th:if="${#fields.hasErrors('nombre')}" class="text-danger" th:errors="*{nombre}"></p>
           </div>
           <div class="form-group col-md-6">
             <label for="descripcion">Descripción</label>
@@ -39,6 +40,7 @@
                     name="descripcion"
                     th:field="*{descripcion}"
                     placeholder="Descripcion">
+            <p th:if="${#fields.hasErrors('descripcion')}" class="text-danger" th:errors="*{descripcion}"></p>
           </div>
         </div>
         <button type="submit" class="btn btn-primary">Create</button>

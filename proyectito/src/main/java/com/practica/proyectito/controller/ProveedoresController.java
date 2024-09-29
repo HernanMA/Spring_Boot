@@ -41,7 +41,12 @@ public class ProveedoresController {
     }
 
     @PostMapping("/proveedores/new")
-    public String saveProveedores(@ModelAttribute("proveedores") ProveedoresDto proveedoresDto) {
+    public String saveProveedores(@Valid @ModelAttribute("proveedores") ProveedoresDto proveedoresDto,
+                                  BindingResult result, Model model) {
+        if (result.hasErrors()) {
+            model.addAttribute("proveedores", proveedoresDto);
+            return "proveedores-create";
+        }
         proveedoresServices.saveProveedores(proveedoresDto);
         return "redirect:/proveedores";
     }

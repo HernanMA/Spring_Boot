@@ -1,6 +1,7 @@
 package com.practica.proyectito.controller;
 
 import com.practica.proyectito.dto.ProductosDto;
+import com.practica.proyectito.dto.ProveedoresDto;
 import com.practica.proyectito.models.Productos;
 import com.practica.proyectito.service.ProductoServices;
 import jakarta.validation.Valid;
@@ -37,7 +38,12 @@ public class ProductosController {
     }
 
     @PostMapping("/productos/new")
-    public String saveProductos(@ModelAttribute("productos") ProductosDto productosDto) {
+    public String saveProductos(@Valid @ModelAttribute("productos") ProductosDto productosDto,
+                                BindingResult result, Model model) {
+        if (result.hasErrors()) {
+            model.addAttribute("productos", productosDto);
+            return "productos-create";
+        }
         productoServices.saveProductos(productosDto);
         return "redirect:/productos";
     }
