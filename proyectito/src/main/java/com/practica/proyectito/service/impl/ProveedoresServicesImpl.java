@@ -1,8 +1,6 @@
 package com.practica.proyectito.service.impl;
 
-import com.practica.proyectito.dto.ProductosDto;
 import com.practica.proyectito.dto.ProveedoresDto;
-import com.practica.proyectito.models.Productos;
 import com.practica.proyectito.models.Proveedores;
 import com.practica.proyectito.repository.ProveedoresRepository;
 import com.practica.proyectito.service.ProveedoresServices;

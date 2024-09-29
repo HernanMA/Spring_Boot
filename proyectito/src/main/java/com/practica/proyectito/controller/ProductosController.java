@@ -1,7 +1,6 @@
 package com.practica.proyectito.controller;
 
 import com.practica.proyectito.dto.ProductosDto;
-import com.practica.proyectito.dto.ProveedoresDto;
 import com.practica.proyectito.models.Productos;
 import com.practica.proyectito.service.ProductoServices;
 import jakarta.validation.Valid;
@@ -23,7 +22,7 @@ public class ProductosController {
         this.productoServices = productoServices;
     }
 
-    @GetMapping("productos")
+    @GetMapping("/productos")
     public String listProductos(Model model) {
         List<ProductosDto> productos = productoServices.findAllProductos();
         model.addAttribute("productos", productos);

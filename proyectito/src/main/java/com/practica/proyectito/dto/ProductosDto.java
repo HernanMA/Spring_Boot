@@ -11,7 +11,7 @@ import java.math.BigDecimal;
 @Data
 @Builder
 public class ProductosDto {
-    private long id;
+    private Long id;
     @NotEmpty(message = "El nombre no debe estar vacio")
     private String nombre;
     @NotEmpty(message = "Debe haber una descripción valida")
