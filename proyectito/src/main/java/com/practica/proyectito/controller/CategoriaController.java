@@ -3,9 +3,11 @@ package com.practica.proyectito.controller;
 import com.practica.proyectito.dto.CategoriasDto;
 import com.practica.proyectito.models.Categorias;
 import com.practica.proyectito.service.CategoriasService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -51,7 +53,12 @@ public class CategoriaController {
     }
 
     @PostMapping("/categorias/{categoriasId}/edit")
-    public String updateCategorias(@PathVariable("categoriasId") Long categoriasId, @ModelAttribute("categorias") CategoriasDto categorias) {
+    public String updateCategorias(@PathVariable("categoriasId") Long categoriasId,
+                                   @Valid @ModelAttribute("categorias") CategoriasDto categorias,
+                                   BindingResult result) {
+        if (result.hasErrors()) {
+            return "categorias-edit";
+        }
         categorias.setId(categoriasId);
         categoriasService.updateCategorias(categorias);
         return "redirect:/categorias";

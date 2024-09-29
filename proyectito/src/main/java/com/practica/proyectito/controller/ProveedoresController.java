@@ -3,10 +3,12 @@ package com.practica.proyectito.controller;
 import com.practica.proyectito.dto.ProveedoresDto;
 import com.practica.proyectito.models.Proveedores;
 import com.practica.proyectito.service.ProveedoresServices;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.Banner;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -52,7 +54,12 @@ public class ProveedoresController {
     }
 
     @PostMapping("/proveedores/{proveedoresId}/edit")
-    public String updateProveedores(@PathVariable("proveedoresId") Long proveedoresId, @ModelAttribute("proveedores") ProveedoresDto proveedores) {
+    public String updateProveedores(@PathVariable("proveedoresId") Long proveedoresId,
+                                    @Valid @ModelAttribute("proveedores") ProveedoresDto proveedores,
+                                    BindingResult result) {
+        if (result.hasErrors()) {
+            return "proveedores-edit";
+        }
         proveedores.setId(proveedoresId);
         proveedoresServices.updateProveedores(proveedores);
         return "redirect:/proveedores";

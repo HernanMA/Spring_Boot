@@ -4,9 +4,11 @@ import com.practica.proyectito.dto.MovimientosInventarioDto;
 import com.practica.proyectito.models.Categorias;
 import com.practica.proyectito.models.Movimientos_Inventario;
 import com.practica.proyectito.service.Movimientos_InventarioService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -52,7 +54,12 @@ public class MovimientoInventarioController {
     }
 
     @PostMapping("/movimientos/{movimientosId}/edit")
-    public String updateMovimientos(@PathVariable("movimientosId") Long movimientosId, @ModelAttribute("movimientosInventario") MovimientosInventarioDto movimientosInventario) {
+    public String updateMovimientos(@PathVariable("movimientosId") Long movimientosId,
+                                    @Valid @ModelAttribute("movimientosInventario") MovimientosInventarioDto movimientosInventario,
+                                    BindingResult result) {
+        if (result.hasErrors()) {
+            return "movimientos-edit";
+        }
         movimientosInventario.setId(movimientosId);
         movimientosInventarioService.updateMovimientos(movimientosInventario);
         return "redirect:/movimientos";

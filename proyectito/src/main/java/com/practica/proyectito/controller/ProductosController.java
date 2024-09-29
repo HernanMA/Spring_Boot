@@ -3,9 +3,11 @@ package com.practica.proyectito.controller;
 import com.practica.proyectito.dto.ProductosDto;
 import com.practica.proyectito.models.Productos;
 import com.practica.proyectito.service.ProductoServices;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -48,7 +50,12 @@ public class ProductosController {
     }
 
     @PostMapping("/productos/{productosId}/edit")
-    public String updateProducto(@PathVariable("productosId") Long productosId, @ModelAttribute("productos") ProductosDto productos) {
+    public String updateProducto(@PathVariable("productosId") Long productosId,
+                                 @Valid @ModelAttribute("productos") ProductosDto productos,
+                                 BindingResult result) {
+        if (result.hasErrors()) {
+            return "productos-edit";
+        }
         productos.setId(productosId);
         productoServices.updateProducto(productos);
         return "redirect:/productos";
