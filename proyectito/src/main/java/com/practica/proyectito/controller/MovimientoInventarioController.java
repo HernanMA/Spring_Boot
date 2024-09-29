@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
@@ -40,6 +41,20 @@ public class MovimientoInventarioController {
     @PostMapping("/movimientos/new")
     public String saveMovimientos(@ModelAttribute("movimientosInventario") Movimientos_Inventario movimientosInventario) {
         movimientosInventarioService.saveMovimientos(movimientosInventario);
+        return "redirect:/movimientos";
+    }
+
+    @GetMapping("/movimientos/{movimientosId}/edit")
+    public String editMovimientosForm(@PathVariable("movimientosId") Long movimientosId, Model model) {
+        MovimientosInventarioDto movimientosInventario = movimientosInventarioService.findMovimientosByid(movimientosId);
+        model.addAttribute("movimientosInventario", movimientosInventario);
+        return "movimientos-edit";
+    }
+
+    @PostMapping("/movimientos/{movimientosId}/edit")
+    public String updateMovimientos(@PathVariable("movimientosId") Long movimientosId, @ModelAttribute("movimientosInventario") MovimientosInventarioDto movimientosInventario) {
+        movimientosInventario.setId(movimientosId);
+        movimientosInventarioService.updateMovimientos(movimientosInventario);
         return "redirect:/movimientos";
     }
 }

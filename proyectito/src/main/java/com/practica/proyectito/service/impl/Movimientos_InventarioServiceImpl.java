@@ -32,6 +32,29 @@ public class Movimientos_InventarioServiceImpl implements Movimientos_Inventario
         return movimientosInventarioRepository.save(movimientosInventario);
     }
 
+    @Override
+    public MovimientosInventarioDto findMovimientosByid(Long movimientosId) {
+        Movimientos_Inventario movimientos = movimientosInventarioRepository.findById(movimientosId).get();
+        return mapToMovimientosInventarioDto(movimientos);
+    }
+
+    @Override
+    public void updateMovimientos(MovimientosInventarioDto movimientosInventarioDto) {
+        Movimientos_Inventario movimientos = mapToMovimientosInventario(movimientosInventarioDto);
+        movimientosInventarioRepository.save(movimientos);
+    }
+
+    private Movimientos_Inventario mapToMovimientosInventario(MovimientosInventarioDto movimientos) {
+        Movimientos_Inventario movimientosInventarioDto = Movimientos_Inventario.builder()
+                .id(movimientos.getId())
+                .producto_id(movimientos.getProducto_id())
+                .fecha(movimientos.getFecha())
+                .cantidad(movimientos.getCantidad())
+                .tipo_movimiento(movimientos.getTipo_movimiento())
+                .build();
+        return  movimientosInventarioDto;
+    }
+
     private MovimientosInventarioDto mapToMovimientosInventarioDto(Movimientos_Inventario movimientosInventario) {
         MovimientosInventarioDto movimientosInventarioDto = MovimientosInventarioDto.builder()
                 .id(movimientosInventario.getId())

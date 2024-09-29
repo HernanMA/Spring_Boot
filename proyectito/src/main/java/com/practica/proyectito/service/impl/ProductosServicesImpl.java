@@ -38,7 +38,7 @@ public class ProductosServicesImpl implements ProductoServices {
     }
 
     @Override
-    public void updateClub(ProductosDto productosDto) {
+    public void updateProducto(ProductosDto productosDto) {
         Productos productos = mapToProductos(productosDto);
         productosRepository.save(productos);
     }

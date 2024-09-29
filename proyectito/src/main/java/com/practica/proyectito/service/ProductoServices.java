@@ -11,5 +11,5 @@ public interface ProductoServices {
 
     ProductosDto findProductosById(Long productosId);
 
-    void updateClub(ProductosDto productos);
+    void updateProducto(ProductosDto productos);
 }

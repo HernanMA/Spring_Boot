@@ -48,9 +48,9 @@ public class ProductosController {
     }
 
     @PostMapping("/productos/{productosId}/edit")
-    public String updateProductos(@PathVariable("productosId") Long productosId, @ModelAttribute("productos") ProductosDto productos) {
+    public String updateProducto(@PathVariable("productosId") Long productosId, @ModelAttribute("productos") ProductosDto productos) {
         productos.setId(productosId);
-        productoServices.updateClub(productos);
+        productoServices.updateProducto(productos);
         return "redirect:/productos";
     }
 }
