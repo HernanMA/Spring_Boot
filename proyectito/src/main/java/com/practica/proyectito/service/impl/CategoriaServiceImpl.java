@@ -32,6 +32,27 @@ public class CategoriaServiceImpl implements CategoriasService {
         return categoriasRepository.save(categorias);
     }
 
+    @Override
+    public CategoriasDto findCategoriasById(Long categoriasId) {
+        Categorias categorias = categoriasRepository.findById(categoriasId).get();
+        return mapToCategoriasDto(categorias);
+    }
+
+    @Override
+    public void updateCategorias(CategoriasDto categoriasDto) {
+        Categorias categorias = mapToCategorias(categoriasDto);
+        categoriasRepository.save(categorias);
+    }
+
+    private Categorias mapToCategorias(CategoriasDto categorias) {
+        Categorias categoriasDto = Categorias.builder()
+                .id(categorias.getId())
+                .nombre(categorias.getNombre())
+                .descripcion(categorias.getDescripcion())
+                .build();
+        return categoriasDto;
+    }
+
     private CategoriasDto mapToCategoriasDto(Categorias categorias) {
         CategoriasDto categoriasDto = CategoriasDto.builder()
                 .id(categorias.getId())

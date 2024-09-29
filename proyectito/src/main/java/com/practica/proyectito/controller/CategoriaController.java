@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
@@ -39,6 +40,20 @@ public class CategoriaController {
     @PostMapping("/categorias/new")
     public String saveCategorias(@ModelAttribute("categorias") Categorias categorias) {
         categoriasService.saveCategorias(categorias);
+        return "redirect:/categorias";
+    }
+
+    @GetMapping("/categorias/{categoriasId}/edit")
+    public String editCategoriasForm(@PathVariable("categoriasId") Long categoriasId, Model model) {
+        CategoriasDto categorias = categoriasService.findCategoriasById(categoriasId);
+        model.addAttribute("categorias", categorias);
+        return "categorias-edit";
+    }
+
+    @PostMapping("/categorias/{categoriasId}/edit")
+    public String updateCategorias(@PathVariable("categoriasId") Long categoriasId, @ModelAttribute("categorias") CategoriasDto categorias) {
+        categorias.setId(categoriasId);
+        categoriasService.updateCategorias(categorias);
         return "redirect:/categorias";
     }
 }

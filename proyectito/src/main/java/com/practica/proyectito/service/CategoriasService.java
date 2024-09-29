@@ -9,4 +9,8 @@ import java.util.List;
 public interface CategoriasService {
     List<CategoriasDto> findAllCategorias();
     Categorias saveCategorias(Categorias categorias);
+
+    CategoriasDto findCategoriasById(Long categoriasId);
+
+    void updateCategorias(CategoriasDto categorias);
 }

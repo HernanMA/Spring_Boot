@@ -33,9 +33,9 @@
                         <img class="img-fluid rounded-3 mb-3" th:src="${categoria.descripcion}" alt="..." />
                         <a th:text="${categoria.nombre}" class="h3 fw-bolder text-decoration-none link-dark stretched-link" href="#!">Project name</a>
                     </div>
+                    <a class="btn btn-primary" th:href="@{/categorias/{categoriasId}/edit(categoriasId=${categoria.id})}">Edit</a>
                 </div>
             </div>
-
         </div>
     </section>
     <section class="py-5 bg-light">

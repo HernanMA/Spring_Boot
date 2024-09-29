@@ -41,7 +41,7 @@ public class ProductosController {
     }
 
     @GetMapping("/productos/{productosId}/edit")
-    public String editProductosForm(@PathVariable("productosId") long productosId, Model model) {
+    public String editProductosForm(@PathVariable("productosId") Long productosId, Model model) {
         ProductosDto productos = productoServices.findProductosById(productosId);
         model.addAttribute("productos", productos);
         return "productos-edit";
