@@ -19,6 +19,7 @@
     <section layout:fragment="body" class="py-5">
         <div class="container">
             <form role="form" method="post" th:action="@{/movimientos/{movimientosId}/edit(movimientosId=${movimientosInventario.id})}" th:object="${movimientosInventario}">
+                <input type="hidden" th:field="*{id}">
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="producto_id">Producto Id</label>
