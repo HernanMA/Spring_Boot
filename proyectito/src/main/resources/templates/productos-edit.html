@@ -17,7 +17,7 @@
   <!-- Page Content-->
   <section layout:fragment="body" class="py-5">
     <div class="container">
-      <form role="form" method="post" th:action="@{/productos/{productosId}/edit(productosId=${producto.id})}" th:object="${producto}">
+      <form role="form" method="post" th:action="@{/productos/{productosId}/edit(productosId=${productos.id})}" th:object="${productos}">
       <input type="hidden" th:field="*{id}">
         <div class="form-row">
           <div class="form-group col-md-6">
