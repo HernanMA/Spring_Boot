@@ -8,4 +8,8 @@ import java.util.List;
 public interface ProveedoresServices {
     List<ProveedoresDto> findAllProveedores();
     Proveedores saveProveedores(Proveedores proveedores);
+
+    ProveedoresDto findProveedoresById(Long proveedoresId);
+
+    void updateProveedores(ProveedoresDto proveedores);
 }

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
@@ -40,6 +41,20 @@ public class ProveedoresController {
     @PostMapping("/proveedores/new")
     public String saveProveedores(@ModelAttribute("proveedores") Proveedores proveedores) {
         proveedoresServices.saveProveedores(proveedores);
+        return "redirect:/proveedores";
+    }
+
+    @GetMapping("/proveedores/{proveedoresId}/edit")
+    public String editProveedoresForm(@PathVariable("proveedoresId") Long proveedoresId, Model model) {
+        ProveedoresDto proveedores = proveedoresServices.findProveedoresById(proveedoresId);
+        model.addAttribute("proveedores", proveedores);
+        return "proveedores-edit";
+    }
+
+    @PostMapping("/proveedores/{proveedoresId}/edit")
+    public String updateProveedores(@PathVariable("proveedoresId") Long proveedoresId, @ModelAttribute("proveedores") ProveedoresDto proveedores) {
+        proveedores.setId(proveedoresId);
+        proveedoresServices.updateProveedores(proveedores);
         return "redirect:/proveedores";
     }
 }
