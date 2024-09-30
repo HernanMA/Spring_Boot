@@ -33,6 +33,13 @@ public class ProveedoresController {
         return "proveedores-list";
     }
 
+    @GetMapping("/proveedores/{proveedoresId}")
+    public String proveedoresDetail(@PathVariable("proveedoresId") Long proveedoresId, Model model) {
+        ProveedoresDto proveedoresDto = proveedoresServices.findProveedoresById(proveedoresId);
+        model.addAttribute("proveedor", proveedoresDto);
+        return "proveedores-detail";
+    }
+
     @GetMapping("/proveedores/new")
     public String createProveedoresForm(Model model) {
         Proveedores proveedores = new Proveedores();

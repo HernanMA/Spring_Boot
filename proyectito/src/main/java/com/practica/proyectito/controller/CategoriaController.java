@@ -32,6 +32,13 @@ public class CategoriaController {
         return "categorias-list";
     }
 
+    @GetMapping("/categorias/{categoriasId}")
+    public String categoriasDetail(@PathVariable("categoriasId") Long categoriasId, Model model) {
+        CategoriasDto categoriasDto = categoriasService.findCategoriasById(categoriasId);
+        model.addAttribute("categoria", categoriasDto);
+        return "categorias-detail";
+    }
+
     @GetMapping("/categorias/new")
     public String createCategoriasForm(Model model) {
         Categorias categorias = new Categorias();

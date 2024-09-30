@@ -6,6 +6,7 @@ import com.practica.proyectito.models.Movimientos_Inventario;
 import com.practica.proyectito.service.Movimientos_InventarioService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.Banner;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -31,6 +32,13 @@ public class MovimientoInventarioController {
         List<MovimientosInventarioDto> movimientosInventario = movimientosInventarioService.findAllMovimientosInventario();
         model.addAttribute("movimientos", movimientosInventario);
         return "movimientos-list";
+    }
+
+    @GetMapping("/movimientos/{movimientosId}")
+    public String movimientosDetail(@PathVariable("movimientosId") Long movimientosId, Model model) {
+        MovimientosInventarioDto movimientosInventarioDto = movimientosInventarioService.findMovimientosByid(movimientosId);
+        model.addAttribute("movimiento", movimientosInventarioDto);
+        return "movimientos-detail";
     }
 
     @GetMapping("/movimientos/new")
