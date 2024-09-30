@@ -45,6 +45,11 @@ public class Movimientos_InventarioServiceImpl implements Movimientos_Inventario
         movimientosInventarioRepository.save(movimientos);
     }
 
+    @Override
+    public void delete(Long movimientosId) {
+        movimientosInventarioRepository.deleteById(movimientosId);
+    }
+
     private Movimientos_Inventario mapToMovimientosInventario(MovimientosInventarioDto movimientos) {
         Movimientos_Inventario movimientosInventarioDto = Movimientos_Inventario.builder()
                 .id(movimientos.getId())

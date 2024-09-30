@@ -48,6 +48,12 @@ public class MovimientoInventarioController {
         return "movimientos-create";
     }
 
+    @GetMapping("/movimientos/{movimientosId}/delete")
+    public String deleteMovimientos(@PathVariable("movimientosId") Long movimientosId) {
+        movimientosInventarioService.delete(movimientosId);
+        return "redirect:/movimientos";
+    }
+
     @PostMapping("/movimientos/new")
     public String saveMovimientos(@Valid @ModelAttribute("movimientosInventario") MovimientosInventarioDto movimientosInventarioDto,
                                   BindingResult result, Model model) {

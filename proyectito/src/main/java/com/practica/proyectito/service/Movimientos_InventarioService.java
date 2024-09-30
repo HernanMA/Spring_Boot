@@ -12,4 +12,6 @@ public interface Movimientos_InventarioService {
     MovimientosInventarioDto findMovimientosByid(Long movimientosId);
 
     void updateMovimientos(MovimientosInventarioDto movimientos);
+
+    void delete(Long movimientosId);
 }
