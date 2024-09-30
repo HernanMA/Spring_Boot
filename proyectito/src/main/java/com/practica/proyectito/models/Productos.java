@@ -22,6 +22,6 @@ public class Productos {
     private String descripcion;
     private BigDecimal precio;
     private int cantidad_en_stock;
-    private int categoria_id;
-    private int proveedor_id;
+    private Integer categoria_id;
+    private Integer proveedor_id;
 }

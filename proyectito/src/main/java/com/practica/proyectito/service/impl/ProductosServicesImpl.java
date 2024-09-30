@@ -44,6 +44,11 @@ public class ProductosServicesImpl implements ProductoServices {
         productosRepository.save(productos);
     }
 
+    @Override
+    public void delete(Long productosId) {
+        productosRepository.deleteById(productosId);
+    }
+
     private Productos mapToProductos(ProductosDto productos) {
         Productos productosDto = Productos.builder()
                 .id(productos.getId())

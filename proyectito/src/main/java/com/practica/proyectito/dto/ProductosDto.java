@@ -24,8 +24,8 @@ public class ProductosDto {
     private int cantidad_en_stock;
     @NotNull(message = "Debe haber un id de categoria")
     @Min(value = 1, message = "La cantidad debe ser al menos 1")
-    private int categoria_id;
+    private Integer categoria_id;
     @NotNull(message = "Debe haber un id de proveedor")
     @Min(value = 1, message = "La cantidad debe ser al menos 1")
-    private int proveedor_id;
+    private Integer proveedor_id;
 }

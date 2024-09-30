@@ -45,6 +45,12 @@ public class ProductosController {
         return "productos-create";
     }
 
+    @GetMapping("/productos/{productosId}/delete")
+    public String deleteProductos(@PathVariable("productosId") Long productosId) {
+        productoServices.delete(productosId);
+        return "redirect:/productos";
+    }
+
     @PostMapping("/productos/new")
     public String saveProductos(@Valid @ModelAttribute("productos") ProductosDto productosDto,
                                 BindingResult result, Model model) {
