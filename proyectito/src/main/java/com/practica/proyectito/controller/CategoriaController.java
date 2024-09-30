@@ -46,6 +46,12 @@ public class CategoriaController {
         return "categorias-create";
     }
 
+    @GetMapping("/categorias/{categoriasId}/delete")
+    public String deleteCategorias(@PathVariable("categoriasId") Long categoriasId) {
+        categoriasService.delete(categoriasId);
+        return "redirect:/categorias";
+    }
+
     @PostMapping("/categorias/new")
     public String saveCategorias(@Valid @ModelAttribute("categorias") CategoriasDto categoriasDto,
                                  BindingResult result, Model model) {

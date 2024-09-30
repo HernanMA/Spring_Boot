@@ -13,4 +13,6 @@ public interface CategoriasService {
     CategoriasDto findCategoriasById(Long categoriasId);
 
     void updateCategorias(CategoriasDto categorias);
+
+    void delete(Long categoriasId);
 }
