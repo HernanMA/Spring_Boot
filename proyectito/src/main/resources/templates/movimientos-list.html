@@ -33,6 +33,7 @@
             <a th:text="${movimiento.cantidad}" class="h3 fw-bolder text-decoration-none link-dark stretched-link" href="#!">Cantidad</a>
             <a th:text="${movimiento.tipo_movimiento}" class="h3 fw-bolder text-decoration-none link-dark stretched-link" href="#!">Tipo de movimiento</a>
           </div>
+          <a class="btn btn-primary" th:href="@{/movimientos/{movimientosId}(movimientosId=${movimiento.id})}">View</a>
           <a class="btn btn-primary" th:href="@{/movimientos/{movimientosId}/edit(movimientosId=${movimiento.id})}">Edit</a>
         </div>
       </div>

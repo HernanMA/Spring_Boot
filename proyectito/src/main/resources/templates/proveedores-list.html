@@ -34,6 +34,7 @@
             <a th:text="${proveedor.telefono}" class="h3 fw-bolder text-decoration-none link-dark stretched-link" href="#!">Project name</a>
             <a th:text="${proveedor.email}" class="h3 fw-bolder text-decoration-none link-dark stretched-link" href="#!">Project name</a>
           </div>
+          <a class="btn btn-primary" th:href="@{proveedores/{proveedoresId}(proveedoresId=${proveedor.id})}">View</a>
           <a class="btn btn-primary" th:href="@{proveedores/{proveedoresId}/edit(proveedoresId=${proveedor.id})}">Edit</a>
         </div>
       </div>

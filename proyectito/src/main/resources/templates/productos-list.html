@@ -32,6 +32,7 @@
             <img class="img-fluid rounded-3 mb-3" th:src="${producto.descripcion}" />
             <a th:text="${producto.nombre}" class="h3 fw-bolder text-decoration-none link-dark stretched-link" th:href="@{/productos/{productosId}(productosId=${producto.id})}"></a>
           </div>
+          <a class="btn btn-primary" th:href="@{/productos/{productosId}(productosId=${producto.id})}">View</a>
           <a class="btn btn-primary" th:href="@{/productos/{productosId}/edit(productosId=${producto.id})}">Edit</a>
         </div>
       </div>
