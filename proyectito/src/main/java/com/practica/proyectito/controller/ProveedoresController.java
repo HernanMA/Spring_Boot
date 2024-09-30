@@ -47,6 +47,12 @@ public class ProveedoresController {
         return "proveedores-create";
     }
 
+    @GetMapping("/proveedores/{proveedoresId}/delete")
+    public String deleteProveedores(@PathVariable("proveedoresId") Long proveedoresId) {
+        proveedoresServices.delete(proveedoresId);
+        return "redirect:/proveedores";
+    }
+
     @PostMapping("/proveedores/new")
     public String saveProveedores(@Valid @ModelAttribute("proveedores") ProveedoresDto proveedoresDto,
                                   BindingResult result, Model model) {

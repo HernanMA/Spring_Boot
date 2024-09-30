@@ -44,6 +44,11 @@ public class ProveedoresServicesImpl implements ProveedoresServices {
         proveedoresRepository.save(proveedores);
     }
 
+    @Override
+    public void delete(Long proveedoresId) {
+        proveedoresRepository.deleteById(proveedoresId);
+    }
+
     private Proveedores mapToProveedores(ProveedoresDto proveedores) {
         Proveedores proveedoresDto = Proveedores.builder()
                 .id(proveedores.getId())

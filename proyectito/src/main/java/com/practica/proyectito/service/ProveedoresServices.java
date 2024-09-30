@@ -12,4 +12,6 @@ public interface ProveedoresServices {
     ProveedoresDto findProveedoresById(Long proveedoresId);
 
     void updateProveedores(ProveedoresDto proveedores);
+
+    void delete(Long proveedoresId);
 }
